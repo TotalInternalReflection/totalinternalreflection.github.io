@@ -1,43 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Video Overlay</title>
+    <style>
+        #main {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            user-select: none;
+            cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj48Y2lyY2xlIGN4PSI3IiBjeT0iNyIgcj0iNCIgc3R5bGU9ImZpbGw6IzAwMDAwMDtvcGFjaXR5OjAuNSIvPjxjaXJjbGUgY3g9IjYiIGN5PSI2IiByPSI0IiBzdHlsZT0iZmlsbDojZWY0MTM2Ii8+PC9zdmc+') 6 6, pointer;
+        }
+
+        #main.cooldown {
+            cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPjxjaXJjbGUgY3g9IjQiIGN5PSI0IiByPSI0IiBzdHlsZT0iZmlsbDojZWY0MTM2O29wYWNpdHk6MC40Ii8+PC9zdmc+') 4 4, no-drop;
+        }
+
+        .clickIndicator {
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+            top: 0;
+            left: 0;
+
+            border: 1px solid #F15A29;
+            border-radius: 50%;
+
+            transition: transform, opacity, border;
+
+            pointer-events: none;
+        }
+
+        .clickIndicatorModifier {
+            border: 1px solid #37eded !important;
+        }
+
+        .clickIndicatorFade {
+            transform: scale(2);
+            opacity: 0;
+        }
+    </style>
+
+</head>
 
 <body>
-    <div id="app"></div>
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js"></script>
 
-    <script>
-        const { loadModule } = window['vue3-sfc-loader'];
+    <div id="main"> </div>
 
-        const options = {
-            moduleCache: {
-                vue: Vue,
-            },
-
-            getFile(url) {
-                return fetch(url).then(response => response.ok ? response.text() : Promise.reject(response));
-            },
-
-            addStyle(styleStr) {
-                const style = document.createElement('style');
-                style.textContent = styleStr;
-                const ref = document.head.getElementsByTagName('style')[0] || null;
-                document.head.insertBefore(style, ref);
-            },
-
-            log(type, ...args) {
-                console.log(type, ...args);
-            }
-        };
-
-        const app = Vue.createApp({
-            components: {
-                'status': Vue.defineAsyncComponent(() => loadModule('./status.vue', options))
-            },
-            template: '<status></status>'
-        });
-
-        app.mount('#app');
-    </script>
+    <script src="js/video_overlay.js"></script>
 </body>
 
 </html>
