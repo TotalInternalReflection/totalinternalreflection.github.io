@@ -78,7 +78,7 @@ function sendClick(clickX, clickY, modifiers) {
     //const url = `https://heat-ebs.j38.net/click/${clickX}/${clickY}`;
     //const url = `https://heat-api.j38.workers.dev/channel/${channelId}`;
     //const url = `https://heat-api.j38.net/channel/${channelId}`;
-    const url = `https://q7um85s62l.execute-api.eu-west-2.amazonaws.com/test/v1/click?MessageGroupId=1234&MessageBody=${clickX}`;
+    const url = `https://q7um85s62l.execute-api.eu-west-2.amazonaws.com/test/v1/click?MessageGroupId=${channelId}&MessageBody=${clickX}`;
 
     console.log(token);
 
