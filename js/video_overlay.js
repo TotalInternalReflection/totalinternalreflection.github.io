@@ -1,4 +1,4 @@
-const cooldownTime = 250;
+const cooldownTime = 2500;
 let cooldown = false;
 
 let main;
